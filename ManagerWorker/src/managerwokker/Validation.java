@@ -73,28 +73,28 @@ public class Validation {
     }
     
     //get valid date
-    public String inputDate(String mess) {
-        System.out.print(mess);
-        //set format of date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        dateFormat.setLenient(false);
-        //force user input exectly a date
-        while(true) {
-            String input = sc.nextLine();
-            try {
-                Date date = dateFormat.parse(input);
-                //get current date
-                Date curDate = Calendar.getInstance().getTime();
-                //check range of date
-                if (curDate.compareTo(date) < 0) {
-                    System.out.print("Please input date that before current date: ");
-                    continue;
-                }
-                dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
-                return dateFormat.format(date);
-            } catch (Exception e) {
-                System.out.print("Please input valid date (dd-MM-yyyy): ");
-            }
-        }
-    }
+//    public String inputDate(String mess) {
+//        System.out.print(mess);
+//        //set format of date
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        dateFormat.setLenient(false);
+//        //force user input exectly a date
+//        while(true) {
+//            String input = sc.nextLine();
+//            try {
+//                Date date = dateFormat.parse(input);
+//                //get current date
+//                Date curDate = Calendar.getInstance().getTime();
+//                //check range of date
+//                if (curDate.compareTo(date) < 0) {
+//                    System.out.print("Please input date that before current date: ");
+//                    continue;
+//                }
+//                dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+//                return dateFormat.format(date);
+//            } catch (Exception e) {
+//                System.out.print("Please input valid date (dd-MM-yyyy): ");
+//            }
+//        }
+//    }
 }

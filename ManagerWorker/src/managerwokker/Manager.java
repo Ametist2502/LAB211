@@ -48,7 +48,7 @@ public class Manager {
         double salary = validate.inputDouble("Enter salary: ", 1, Double.MAX_VALUE);
         String workLocation = validate.inputString("Enter work location: ");
         workers.add(new Worker(id, name, age, salary, workLocation));
-        history.add(new History("UP", date, id, name, age, salary, workLocation));
+        history.add(new History("", date, id, name, age, salary, workLocation));
 
     }
 
@@ -96,6 +96,7 @@ public class Manager {
             System.out.println("No history");
             return;
         }
+        
         System.out.println("-------- Show Info --------");
         System.out.printf("%5s%15s%5s%10s%10s%20s\n", "Code", "Name", "Age",
                 "Salary", "Status", "Date");
