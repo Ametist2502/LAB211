@@ -7,7 +7,9 @@ package fruitshop;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -55,9 +57,9 @@ public class Manager {
             if (fruit.getQuantity() != 0) {
                 countItem++;
                 if (countItem == 1) {
-                    System.out.printf("%-10s%-20s%-20s%-15s\n", "Item", "Fruit name", "Origin", "Price");
+                    System.out.printf("%10s%20s%20s%15s\n", "Item", "Fruit name", "Origin", "Price");
                 }
-                System.out.printf("%-10d%-20s%-20s%-15.0f$\n", countItem,
+                System.out.printf("%10d%20s%20s%15.0f$\n", countItem,
                         fruit.getFruitName(), fruit.getOrigin(),
                         fruit.getPrice());
             }
@@ -114,7 +116,7 @@ public class Manager {
                 }
 
             }
-            if (!validation.checkInputYN("Do you want to continue?")) {
+            if (!validation.checkInputYN("Do you want to order now")) {
                 break;
             }
         }
@@ -150,7 +152,7 @@ public class Manager {
                     fruit.getPrice() * fruit.getQuantity());
             total += fruit.getPrice() * fruit.getQuantity();
         }
-        System.out.println("Total: " + total);
+        System.out.println("Total: " + total +"$");
     }
 
     public void viewOrder() {
@@ -167,11 +169,11 @@ public class Manager {
     }
     public void generateFruit(){
         fruits.add(new Fruit("F1", "Coconut", 2000, 3, "Viet Nam"));
-        fruits.add(new Fruit("F2", "Pitaya(Dragon Fruit)", 4000, 6, "Viet Nam"));
+        fruits.add(new Fruit("F2", "Pitaya", 4000, 6, "Viet Nam"));
         fruits.add(new Fruit("F3", "Apple", 5000, 5, "USA"));
         fruits.add(new Fruit("F4", "Passion Fruit", 10000, 1, "Southern Brazil"));
         fruits.add(new Fruit("F5", "Durian", 7500, 5, "Southeast Asia"));
         fruits.add(new Fruit("F6", "Papaya", 4000, 5, "Mexico"));
-        fruits.add(new Fruit("F7", "Starfruit(Carambola)", 5200, 5, "Hanoi"));
+        fruits.add(new Fruit("F7", "Starfruit", 5200, 5, "Hanoi"));
     }
 }

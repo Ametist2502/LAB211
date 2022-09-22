@@ -67,11 +67,11 @@ public class Validation {
         while (true) {
              String result = sc.nextLine();
          
-            if (result.equalsIgnoreCase("Y")) {
+            if (result.equalsIgnoreCase("N")) {
                 return true;
             }
            
-            if (result.equalsIgnoreCase("N")) {
+            if (result.equalsIgnoreCase("Y")) {
                 return false;
             }
             System.err.println("Please input y/Y or n/N.");
