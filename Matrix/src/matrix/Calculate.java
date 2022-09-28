@@ -2,6 +2,8 @@ package matrix;
 
 public class Calculate {
     Validation validation = new Validation();
+    
+    
     public int[][] inputMatrix(int n){
         System.out.print("Enter Row Matrix: ");
         int row = validation.checkInput();
@@ -10,6 +12,7 @@ public class Calculate {
         int[][] matrix = new int[row][col];
         for(int i=0; i< row; i++){
             for(int j=0; j<col; j++){
+                System.out.print("Enter values: ");
                 matrix[i][j] = validation.checkInput();
             }
         }
@@ -27,64 +30,59 @@ public class Calculate {
         }
     }
     
-    public void additionMatrix(int[][] matrix1, int[][] matrix2){
+    public int[][] additionMatrix(int[][] matrix1, int[][] matrix2){
         displayMatrix(matrix1);
         System.out.println("+");
         displayMatrix(matrix2);
         System.out.println("=");
-        int row = matrix1.length;
-        int col = matrix1[0].length;
-        for(int i=0; i<row; i++){
-            for(int j=0; j<col; j++){
-                System.out.print("[" + (matrix1[i][j] + matrix2[i][j]) + "]");
-            }
-            System.out.println();
+          if (matrix1.length != matrix2.length
+                || matrix1[0].length != matrix2[0].length) {
+            System.out.println("Invalid size!");
+            return null;
         }
+        int[][] ansMatrix = new int[matrix1.length][matrix1[0].length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix1[0].length; j++) {
+                ansMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+        return ansMatrix;
     }
     
-    public void subtractionMatrix(int[][] matrix1, int[][] matrix2){
-        displayMatrix(matrix1);
-        System.out.println("-");
-        displayMatrix(matrix2);
-        System.out.println("=");
-        int row = matrix1.length;
-        int col = matrix1[0].length;
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                System.out.print("[" + (matrix1[i][j] - matrix2[i][j]) + "]");
-            }
-            System.out.println();
+    public int[][] subtractionMatrix(int[][] matrix1, int[][] matrix2) {
+        if (matrix1.length != matrix2.length
+                || matrix1[0].length != matrix2[0].length) {
+            System.out.println("Invalid size!");
+            return null;
         }
+        int[][] ansMatrix = new int[matrix1.length][matrix1[0].length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix1[0].length; j++) {
+                ansMatrix[i][j] = matrix1[i][j] - matrix2[i][j];
+            }
+        }
+        return ansMatrix;
     }
-    
-        public void multiplicationMatrix(int[][] matrix1, int[][] matrix2) {
+
+    public int[][] multiplicationMatrix(int[][] matrix1, int[][] matrix2) {
         displayMatrix(matrix1);
         System.out.println("*");
         displayMatrix(matrix2);
         System.out.println("=");
-        int row1 = matrix1.length;
-        int col1 = matrix1[0].length;
-        int row2 = matrix2.length;
-        int col2 = matrix2[0].length;
-        if (col1 != row2) {
-            System.err.println("Can't multiple");
-            return;
+        if (matrix1[0].length != matrix2.length) {
+            System.out.println("Invalide size!");
+            return null;
         }
-        int[][] matrixResult = new int[row1][col2];
-        for (int i = 0; i < row1; i++) {
-            for (int j = 0; j < col2; j++) {
-                matrixResult[i][j] = 0;
-            }
-        }
-
-        for (int i = 0; i < row1; i++) {
-            for (int j = 0; j < col2; j++) {
-                for (int k = 0; k < col1; k++) {
-                    matrixResult[i][j] += matrix1[i][k] * matrix2[k][j];
+        int[][] ansMatrix = new int[matrix1.length][matrix2[0].length];
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix2[0].length; j++) {
+                int temp = 0;
+                for (int k = 0; k < matrix1[0].length; k++) {
+                    temp += matrix1[i][k] * matrix2[k][j];
                 }
+                ansMatrix[i][j] = temp;
             }
         }
-        
-        displayMatrix(matrixResult);
+        return ansMatrix;
     }
 }

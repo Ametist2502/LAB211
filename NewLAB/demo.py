@@ -1,2 +1,2 @@
-print("???????????")
-print("DCM AMD khong sp GPU")
+import pyodbc 
+print(pyodbc.drivers())

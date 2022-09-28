@@ -8,7 +8,8 @@ public class main {
         Calculate calculate = new Calculate();
         
         int[][] matrix1 = calculate.inputMatrix(1);
-        int[][] matrix2 = calculate.inputMatrix(2);
+        Calculate calculate1 = new Calculate();
+        int[][] matrix2 = calculate1.inputMatrix(2);
         while (true) {
             System.out.println("1. Addition Matrix");
             System.out.println("2. Subtraction Matrix");
