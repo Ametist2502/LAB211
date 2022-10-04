@@ -6,7 +6,6 @@
 package expenses;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -51,7 +50,7 @@ public class Manager {
         return -1;
     }
 
-    public void deleteExpense(ArrayList<Expenses> list) {
+    public void deleteExpense(ArrayList<Expenses> list) throws IOException {
         System.out.print("Enter id: ");
         int id = validation.checkInputInt();
         int checkIdExist = checkIdExist(list, id);

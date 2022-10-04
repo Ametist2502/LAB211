@@ -10,20 +10,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  *
  * @author Admin MSI
  */
 public class Validation {
-    Scanner sc = new Scanner(System.in);
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
-    public int checkInputLimit(int min, int max) {
+    public int checkInputLimit(int min, int max) throws IOException {
         while (true) {
             try {
-                int n = Integer.parseInt(sc.nextLine());
+                int n = Integer.parseInt(input.readLine());
                 if (n < min || n > max) {
                     throw new NumberFormatException();
                 }
@@ -71,10 +69,10 @@ public class Validation {
         return date;
     }
 
-    public double checkInputDouble(){
+    public double checkInputDouble() throws IOException{
         while(true){
             try{
-                double result = Double.parseDouble(sc.nextLine());
+                double result = Double.parseDouble(input.readLine());
                 return result;
             }catch(NumberFormatException ex) {
                 System.err.println("Re-input");
@@ -82,10 +80,10 @@ public class Validation {
         }
     }
     
-    public int checkInputInt(){
+    public int checkInputInt() throws IOException{
         while(true){
             try{
-                int result = Integer.parseInt(sc.nextLine());
+                int result = Integer.parseInt(input.readLine());
                 return result;
             }catch(NumberFormatException ex){
                 System.out.println("Re-input");
