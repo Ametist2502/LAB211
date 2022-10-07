@@ -5,10 +5,7 @@
  */
 package managerwokker;
 
-/**
- *
- * @author Admin MSI
- */
+
 public class Worker {
 
     private String id;

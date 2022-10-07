@@ -11,24 +11,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-/**
- *
- * @author Admin MSI
- */
+
 public class Validation {
     Scanner sc = new Scanner(System.in);
     
-    //get input integer number between min and max
+ 
     public int inputInt(String msg, int min, int max) {
         System.out.print(msg);
-        //force user input exectly integer number
         while(true) {
             String input = sc.nextLine();
             try {
                 int number = Integer.parseInt(input);
                 //check range of number
                 if (number < min || number > max) {
-                    System.out.print("Please input between " + min + ", " + max + ": ");
+                    System.out.print("Please input between " + min + " and " + max + ": ");
                     continue;
                 }
                 return number;
@@ -38,15 +34,12 @@ public class Validation {
         }
     }
     
-    //get input double number between min and max
     public double inputDouble(String mess, double min, double max) {
         System.out.print(mess);
-        //force user input exectly double number
         while(true) {
             String input = sc.nextLine();
             try {
                 double number = Double.parseDouble(input);
-                //check range of number
                 if (number < min || number > max) {
                     System.out.print("Please input between " + min + ", " + max + ": ");
                     continue;
@@ -58,13 +51,11 @@ public class Validation {
         }
     }
     
-    //get non-empty string
     public String inputString(String mess) {
         System.out.print(mess);
-        //force user input exectly non-empty string
         while(true) {
             String input = sc.nextLine();
-            if (input.equals("")) {
+            if (input.trim().equals("")) {
                 System.out.print("Please input a non-empty string: ");
                 continue;
             }
@@ -76,7 +67,7 @@ public class Validation {
 //    public String inputDate(String mess) {
 //        System.out.print(mess);
 //        //set format of date
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 //        dateFormat.setLenient(false);
 //        //force user input exectly a date
 //        while(true) {

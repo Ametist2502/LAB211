@@ -9,17 +9,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
-/**
- *
- * @author Admin MSI
- */
+
 public class Manager {
     ArrayList<Worker> workers = new ArrayList<>();
     ArrayList<History> history = new ArrayList<>();
-    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    Calendar calendar = Calendar.getInstance();
-    String date = dateFormat.format(calendar.getTime());
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    Date now = new Date();
+    String date = df.format(now);
     Validation validate = new Validation();
 
     public Worker getWorkerByCode(String id) {
@@ -34,13 +32,13 @@ public class Manager {
     public void addWorker() {
         String id;
         while (true) {
-            System.out.println("-------- Input --------");
-            id = validate.inputString("Enter id: ");
+            System.out.println("-------- Add Worker --------");
+            id = validate.inputString("Enter code: ");
             Worker worker = getWorkerByCode(id);
             if (worker == null) {
                 break;
             } else {
-                System.out.println("This id is existed");
+                System.out.println("This code is existed");
             }
         }
         String name = validate.inputString("Enter name: ");
@@ -48,13 +46,13 @@ public class Manager {
         double salary = validate.inputDouble("Enter salary: ", 1, Double.MAX_VALUE);
         String workLocation = validate.inputString("Enter work location: ");
         workers.add(new Worker(id, name, age, salary, workLocation));
-        history.add(new History("", date, id, name, age, salary, workLocation));
+        //history.add(new History("", date, id, name, age, salary, workLocation));
 
     }
 
     public void changeSalary(String status) {
-        System.out.println("-------- Input --------");
-        String id = validate.inputString("Enter id: ");
+        System.out.println("-------- Up/Down Salary --------");
+        String id = validate.inputString("Enter code: ");
         Worker worker = getWorkerByCode(id);
         if (worker == null) {
             System.err.println("Not exist worker.");
@@ -92,16 +90,16 @@ public class Manager {
 
     public void printListHistory() {
         if (history.isEmpty()) {
-            System.out.println("-------- Show Info --------");
+            System.out.println("-------- Display Information Salary --------");
             System.out.println("No history");
             return;
         }
         
-        System.out.println("-------- Show Info --------");
-        System.out.printf("%5s%15s%5s%10s%10s%20s\n", "Code", "Name", "Age",
+        System.out.println("-------- Display Information Salary --------");
+        System.out.printf("%-5s%-15s%-5s%-10s%-10s%-20s\n", "Code", "Name", "Age",
                 "Salary", "Status", "Date");
         for (History history : history) {
-            System.out.printf("%5s%15s%5s%10s%10s%20s\n", history.getId(),
+            System.out.printf("%-5s%-15s%-5s%-10s%-10s%-20s\n", history.getId(),
                     history.getName(), history.getAge(), history.getSalary(),
                     history.getStatus(), history.getDate());
         }

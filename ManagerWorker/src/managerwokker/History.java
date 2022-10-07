@@ -5,10 +5,7 @@
  */
 package managerwokker;
 
-/**
- *
- * @author Admin MSI
- */
+
 public class History extends Worker{
 
     private String status;

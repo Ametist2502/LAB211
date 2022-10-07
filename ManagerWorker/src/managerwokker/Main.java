@@ -7,10 +7,7 @@ package managerwokker;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Admin MSI
- */
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,10 +15,10 @@ public class Main {
         Validation validate = new Validation();
         while (true) {
             System.out.println("======== Mananger Worker ========");
-            System.out.println("1. Add worker.");
-            System.out.println("2. Increase salary for worker.");
-            System.out.println("3. Decrease for worker");
-            System.out.println("4. Show adjusted salary worker information");
+            System.out.println("1. Add Worker.");
+            System.out.println("2. Up salary.");
+            System.out.println("3. Down salary.");
+            System.out.println("4. Display information salary.");
             System.out.println("5. Exist");
             System.out.print("Enter your choice: ");
             int choice = validate.inputInt("", 1, 5);
