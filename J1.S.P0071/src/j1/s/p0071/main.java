@@ -5,17 +5,14 @@
  */
 package j1.s.p0071;
 
+import java.text.ParseException;
+
 /**
  *
  * @author Admin MSI
  */
-public class J1SP0071 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class main {
+    public static void main(String[] args) throws ParseException {
+        Manager.display();
     }
-    
 }
