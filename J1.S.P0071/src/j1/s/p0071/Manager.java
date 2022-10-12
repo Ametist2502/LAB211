@@ -7,6 +7,8 @@ package j1.s.p0071;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -42,9 +44,9 @@ public class Manager {
         int findId = findTaskExist(lt);
         if (findId != -1) {
             lt.remove(findId);
-            for (int i = findId; i < lt.size(); i++) {
-                lt.get(i).setId(lt.get(i).getId() - 1);
-            }
+//            for (int i = findId; i < lt.size(); i++) {
+//                lt.get(i).setId(lt.get(i).getId() - 1);
+//            }
             System.err.println("Delete success.");
         }
     }
@@ -62,6 +64,8 @@ public class Manager {
     }
 
     private static void print(ArrayList<Task> lt) {
+        double time;
+        
         if (lt.isEmpty()) {
             System.err.println("List empty.");
             return;
@@ -74,12 +78,29 @@ public class Manager {
                     lt.get(i).getRequirementName(),
                     lt.get(i).getTaskTypeId(),
                     lt.get(i).getDate(),
-                    Double.parseDouble(lt.get(i).getPlanTo()) - Double.parseDouble(lt.get(i).getPlanFrom()),
+                    time = Double.parseDouble(lt.get(i).getPlanTo()) - Double.parseDouble(lt.get(i).getPlanFrom()),
                     lt.get(i).getassign(),
                     lt.get(i).getreviewer()
             );
-
         }
+    }
+    
+    public static void sortTime(ArrayList<Task> lt){
+        Collections.sort(lt, new Comparator<Task>() {
+            @Override
+            public int compare(Task t, Task t1) {
+                double time1 = Double.parseDouble(t.getPlanTo())- Double.parseDouble(t.getPlanFrom());
+                double time2 = Double.parseDouble(t1.getPlanTo())- Double.parseDouble(t1.getPlanFrom());
+                if(time1>time2){
+                    return -1;
+                }else if(time1<time2){
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
+            }
+        });
     }
 
     public static void display() throws ParseException {
@@ -91,8 +112,9 @@ public class Manager {
             System.out.println("2. Delete Task");
             System.out.println("3. Display Task");
             System.out.println("4. Exit");
+//            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
-            choice = Validation.checkInputLimit(1, 4);
+            choice = Validation.checkInputLimit(1, 5);
             switch (choice) {
                 case 1:
                     addTask(lt, id);
@@ -100,10 +122,13 @@ public class Manager {
                     break;
                 case 2:
                     deleteTask(lt, id);
-                    id--;
+//                    id--;
                     break;
                 case 3:
                     print(lt);
+                    break;
+                case 5: 
+                    sortTime(lt);
                     break;
                 case 4:
                     return;

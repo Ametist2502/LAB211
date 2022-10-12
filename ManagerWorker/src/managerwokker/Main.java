@@ -21,7 +21,7 @@ public class Main {
             System.out.println("4. Display information salary.");
             System.out.println("5. Exist");
             System.out.print("Enter your choice: ");
-            int choice = validate.inputInt("", 1, 5);
+            int choice = validate.inputInt("", 1, 6);
             switch (choice) {
                 case 1:
                     Manager.addWorker();
@@ -37,6 +37,9 @@ public class Main {
                     break;
                 case 5:
                     return;
+                case 6:
+                    Manager.sort();
+                    break;
             }
         }
     }

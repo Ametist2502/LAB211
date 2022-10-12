@@ -9,10 +9,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
-
 public class Manager {
+
     ArrayList<Worker> workers = new ArrayList<>();
     ArrayList<History> history = new ArrayList<>();
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -46,7 +48,6 @@ public class Manager {
         double salary = validate.inputDouble("Enter salary: ", 1, Double.MAX_VALUE);
         String workLocation = validate.inputString("Enter work location: ");
         workers.add(new Worker(id, name, age, salary, workLocation));
-        //history.add(new History("", date, id, name, age, salary, workLocation));
 
     }
 
@@ -94,7 +95,7 @@ public class Manager {
             System.out.println("No history");
             return;
         }
-        
+
         System.out.println("-------- Display Information Salary --------");
         System.out.printf("%-5s%-15s%-5s%-10s%-10s%-20s\n", "Code", "Name", "Age",
                 "Salary", "Status", "Date");
@@ -103,5 +104,14 @@ public class Manager {
                     history.getName(), history.getAge(), history.getSalary(),
                     history.getStatus(), history.getDate());
         }
+    }
+
+    void sort() {
+        Collections.sort(history, new Comparator<History>() {
+            @Override
+            public int compare(History t, History t1) {
+                return t.getId().compareToIgnoreCase(t1.getId());
+            }
+        });
     }
 }
