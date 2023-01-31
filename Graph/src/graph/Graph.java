@@ -51,7 +51,7 @@ public class Graph {
         graph.addEdge(4, 5);
 
         Scanner scanner = new Scanner(System.in);
-
+        
         System.out.println("Enter the start point: ");
         int start = scanner.nextInt();
         scanner.nextLine();
