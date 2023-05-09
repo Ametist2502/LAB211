@@ -76,7 +76,9 @@ public class BubbleSort {
                 continue;
             }
         } while (true);
+//        System.out.println(size_array);
         return (int) size_array;
+        
     }
 
     private static int[] CreateArray(int size_array) {
